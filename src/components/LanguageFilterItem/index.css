@@ -1,0 +1,19 @@
+/* Write your CSS here */
+
+.tab-item {
+  font-family: Roboto;
+  font-size: 15px;
+  color: #0f172a;
+  margin-right: 14px;
+}
+
+.tab-button {
+  background-color: transparent;
+  border-width: 0;
+}
+
+.active-tab {
+  color: #0284c7;
+  border-radius: 5px;
+  border-color: #0284c7;
+}

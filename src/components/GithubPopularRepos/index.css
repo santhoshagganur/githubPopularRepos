@@ -1,0 +1,21 @@
+/* Write your CSS here */
+
+.app-bg-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.app-name {
+  font-family: lobster;
+  font-size: 40px;
+  color: #0f172a;
+  font-weight: bold;
+}
+
+.app-items-container {
+  display: flex;
+  list-style-type: none;
+}
