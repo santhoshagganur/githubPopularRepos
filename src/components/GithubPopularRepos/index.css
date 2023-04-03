@@ -19,3 +19,21 @@
   display: flex;
   list-style-type: none;
 }
+
+.resultant-repositories-container {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  width: 60vw;
+  flex-wrap: wrap;
+}
+
+.failure-container {
+  display: flex;
+  justify-content: center;
+}
+
+.failure-view {
+  height: 100px;
+  background-size: cover;
+}

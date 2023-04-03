@@ -9,7 +9,7 @@ const LanguageFilterItem = props => {
     changeActiveTabId(id)
   }
 
-  const activeTabClassName = id === activeTabId ? 'active-tab' : ''
+  const activeTabClassName = activeTabId ? 'active-tab' : ''
 
   return (
     <button

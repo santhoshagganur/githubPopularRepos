@@ -1,5 +1,7 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
 import LanguageFilterItem from '../LanguageFilterItem'
+import RepositoryItem from '../RepositoryItem'
 import './index.css'
 
 const languageFiltersData = [
@@ -12,13 +14,32 @@ const languageFiltersData = [
 
 // Write your code here
 class GithubPopularRepos extends Component {
-  state = {activeTabId: '', recordsList: []}
+  state = {
+    activeTabId: languageFiltersData[0].id,
+    recordsList: [],
+    isLoading: true,
+  }
+
+  componentDidMount() {
+    this.renderResults()
+  }
 
   changeActiveTabId = id => {
-    this.setState({activeTabId: id})
+    this.setState({activeTabId: id}, this.renderResults)
+  }
+
+  renderFailureView = () => {
+    ;<div className="failure-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/api-failure-view.png"
+        alt="failure view"
+        className="failure-view"
+      />
+    </div>
   }
 
   renderResults = async () => {
+    this.setState({isLoading: true})
     const {activeTabId} = this.state
     const url = `https://apis.ccbp.in/popular-repos?language=${activeTabId}`
 
@@ -34,14 +55,32 @@ class GithubPopularRepos extends Component {
         avatarUrl: each.avatar_url,
       }))
 
-      this.setState({recordsList: updatedResults})
+      this.setState({recordsList: updatedResults, isLoading: false})
+    } else {
+      this.renderFailureView()
     }
   }
 
-  render() {
-    const {activeTabId, recordsList} = this.state
+  renderLoader = () => (
+    <div testid="loader">
+      <Loader type="ThreeDots" color="#0284c7" height={80} width={80} />
+    </div>
+  )
 
-    console.log(recordsList)
+  renderRepositories = () => {
+    const {recordsList} = this.state
+
+    return (
+      <ul className="resultant-repositories-container">
+        {recordsList.map(each => (
+          <RepositoryItem eachRepository={each} key={each.id} />
+        ))}
+      </ul>
+    )
+  }
+
+  render() {
+    const {activeTabId, isLoading} = this.state
 
     return (
       <div className="app-bg-container">
@@ -56,7 +95,7 @@ class GithubPopularRepos extends Component {
             />
           ))}
         </ul>
-        {this.renderResults}
+        {isLoading ? this.renderLoader() : this.renderRepositories()}
       </div>
     )
   }

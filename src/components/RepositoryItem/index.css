@@ -1,1 +1,39 @@
 /* Write your CSS here */
+.each-repository-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #0284c7;
+  margin: 20px;
+  width: 200px;
+}
+
+.repository-logo {
+  height: 70px;
+  background-size: cover;
+}
+
+.repository-name {
+  color: #e73959;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.repo-inner-container {
+  display: flex;
+}
+
+.inner-image {
+  height: 15px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.inner-information {
+  margin-top: 0;
+  color: #1e293b;
+  font-size: 12px;
+}
